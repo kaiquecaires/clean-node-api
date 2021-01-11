@@ -34,10 +34,10 @@
     "start": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
-    "test:unit": "yarn test --watch -c jest-unit-config.js",
-    "test:integration": "yarn test --watch -c jest-integration-config.js",
-    "test:staged": "yarn test --findRelatedTests",
-    "test:ci": "yarn test --coverage"
+    "test:unit": "npm run test --watch -c jest-unit-config.js",
+    "test:integration": "npm run test --watch -c jest-integration-config.js",
+    "test:staged": "npm run test --findRelatedTests",
+    "test:ci": "npm run test --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
