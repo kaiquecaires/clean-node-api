@@ -36,7 +36,7 @@
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "dev": "sucrase-node src/main/server.ts",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test": "jest --no-cache --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "yarn test --watch -c jest-unit-config.js",
     "test:integration": "yarn test --watch -c jest-integration-config.js",
@@ -49,5 +49,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.3",
     "validator": "^13.5.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
