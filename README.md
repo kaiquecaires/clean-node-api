@@ -7,7 +7,7 @@ Aplicação em NodeJs para treinar conceitos de Typescript, Clean Architecture, 
 
 # `Princípios:`
 - [x] [Cadastro](requirements/signup-requirement) <br>
-- [x] Login <br>
+- [x] [Login](requirements/login-requirement) <br>
 
 # `Ferramentas:`
 - [x] Typescript <br>
