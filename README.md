@@ -2,12 +2,13 @@
 Aplicação em NodeJs para treinar conceitos de Typescript, Clean Architecture, Solid e outros padrões. (Este foi um treinamento ministrado por: Rodrigo Manguinho).
 
 # `Apis construídas:`
-- [x] Cadastro <br>
-- [x] Login <br>
-
-# `Princípios:`
 - [x] [Cadastro](requirements/signup-requirement) <br>
 - [x] [Login](requirements/login-requirement) <br>
+
+# `Principios:`
+- [x] Clean Architecture <br>
+- [x] TDD <br>
+- [x] SOLID <br>
 
 # `Ferramentas:`
 - [x] Typescript <br>
