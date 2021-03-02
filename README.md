@@ -17,4 +17,5 @@ Aplicação em NodeJs para treinar conceitos de Typescript, Clean Architecture, 
 - [x] Bcrypt <br>
 - [x] Jsonwebtoken <br>
 - [x] Validator <br>
+- [x] Docker <br>
 
