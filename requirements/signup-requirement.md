@@ -6,8 +6,6 @@ Request body (JSON):
 
 <code>
 
-  {
-
     "name": "string",
 
     "email": "string",
@@ -16,15 +14,11 @@ Request body (JSON):
 
     "passwordConfirmation": "string"
 
-  }
-
 </code>
 
 Response:
 
 <code>
-
-  {
 
     "name": "string",
 
@@ -33,8 +27,6 @@ Response:
     "password": "string",
 
     "id": "string"
-
-  }
 
 </code>
 
