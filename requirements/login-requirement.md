@@ -4,19 +4,18 @@ Método: POST
 
 Request body (JSON):
 
-<code>
-
+```Javascript
+{
     "email": "string",
-
     "password": "string"
-
-</code>
+}
+```
 
 Response:
 
-<code>
-
+```Javascript
+{
     "accessToken": "string"
-
-</code>
+}
+```
 
