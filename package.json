@@ -36,14 +36,14 @@
     "build": "rimraf dist && tsc",
     "build-w": "tsc -w",
     "debug": "nodemon -L --watch ./dist node --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
-    "up": "yarn build && docker-compose up -d",
+    "up": "npm run build && docker-compose up -d",
     "down": "docker-compose down",
     "test": "jest --no-cache --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
-    "test:unit": "yarn test --watch -c jest-unit-config.js",
-    "test:integration": "yarn test --watch -c jest-integration-config.js",
-    "test:staged": "yarn test --findRelatedTests",
-    "test:ci": "yarn test --coverage"
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test --findRelatedTests",
+    "test:ci": "npm test --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -55,5 +55,10 @@
   },
   "engines": {
     "node": "14.x"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "4.4.1"
+    }
   }
 }
