@@ -1,6 +1,6 @@
 {
   "name": "clean-node-api",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "index.js",
   "author": "kaique coimbra <kaique.caires@yahoo.com>",
   "license": "MIT",
@@ -42,8 +42,8 @@
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
-    "test:staged": "npm test --findRelatedTests",
-    "test:ci": "npm test --coverage"
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
