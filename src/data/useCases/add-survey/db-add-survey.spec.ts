@@ -1,4 +1,4 @@
-import { AddSurveyModel, AddSurveyRepository } from './add-survey-protocols'
+import { AddSurveyModel, AddSurveyRepository } from './db-add-survey-protocols'
 import { DbAddSurvey } from './db-add-survey'
 
 const makeFakeSurveyData = (): AddSurveyModel => ({
