@@ -1,6 +1,6 @@
 import { Collection } from 'mongodb'
 import { MongoHelper } from '../helpers/mongo-helper'
-import { SurveyRepository } from './survey-mongo-repository'
+import { SurveyMongoRepository } from './survey-mongo-repository'
 
 let surveyCollection: Collection
 
@@ -18,8 +18,8 @@ describe('Survey Mongo Repository', () => {
     await surveyCollection.deleteMany({})
   })
 
-  const makeSut = (): SurveyRepository => {
-    return new SurveyRepository()
+  const makeSut = (): SurveyMongoRepository => {
+    return new SurveyMongoRepository()
   }
 
   test('Should return a survey on success', async () => {
