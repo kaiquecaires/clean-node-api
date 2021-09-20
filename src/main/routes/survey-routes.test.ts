@@ -20,7 +20,7 @@ describe('Survey Routes', () => {
   })
 
   describe('POST /surveys', () => {
-    test('Should return 204 on surveys', async () => {
+    test('Should return 403 on add survey withou access token', async () => {
       await request(app).post('/api/surveys').send({
         question: 'Question',
         answers: [
@@ -33,7 +33,7 @@ describe('Survey Routes', () => {
             image: 'http://image-name.com'
           }
         ]
-      }).expect(204)
+      }).expect(403)
     })
   })
 })
