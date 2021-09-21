@@ -4,4 +4,4 @@ coverage
 globalConfig
 data
 !src/data
-.globalConfig.json
+globalConfig.json
