@@ -1,7 +1,7 @@
-import { LoadSurveysController } from '../../../../../presentation/controllers/survey/load-surveys/load-surveys-controller'
-import { Controller } from '../../../../../presentation/protocols'
-import { makeLogControllerDecorator } from '../../../decorators/log-controller-decorator-factory'
-import { makeDbloadSurveys } from '../../../useCases/survey/load-surveys/db-load-surveys'
+import { LoadSurveysController } from '@/presentation/controllers/survey/load-surveys/load-surveys-controller'
+import { Controller } from '@/presentation/protocols'
+import { makeLogControllerDecorator } from '@/main/factories/decorators/log-controller-decorator-factory'
+import { makeDbloadSurveys } from '@/main/factories/useCases/survey/load-surveys/db-load-surveys'
 
 export const makeLoadSurveysController = (): Controller => {
   const controller = new LoadSurveysController(makeDbloadSurveys())
