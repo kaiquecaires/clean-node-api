@@ -13,7 +13,7 @@ const makeEmailValidator = (): EmailValidator => {
   return emailValidatorStub
 }
 
-interface SutTypes {
+type SutTypes = {
   sut: EmailValidation
   emailValidatorStub: EmailValidator
 }
