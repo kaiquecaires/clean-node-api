@@ -6,7 +6,7 @@
 4. ✅ Valida se o campo **answer** é uma resposta válida
 5. ✅ **Cria** um resultado de enquete com os dados fornecidos caso não tenha um registro
 6. ✅ **Atualiza** um resultado de enquete com os dados fornecidos caso já tenha um registro
-7. ⛔ Retorna **200** com os dados do resultado da enquete.
+7. ✅ Retorna **200** com os dados do resultado da enquete.
 
 > ## Exceções
 
@@ -14,6 +14,6 @@
 2. ⛔ Retorna erro **403** se não for um usuária
 3. ✅ Retorna erro **403** se o surveyId passado na URL for inválido.
 4. ✅  Retorna erro **403** se a resposta enviada pelo cliente for uma resposta errada.
-5. ⛔ Retorna erro **500** ao tentar criar o resultado da enquete
-6. ⛔ Retorna erro **500** ao tentar atualizar o resultado da enquete
+5. ✅ Retorna erro **500** ao tentar criar o resultado da enquete
+6. ✅ Retorna erro **500** ao tentar atualizar o resultado da enquete
 7. ✅ Retorna erro **500** ao tentar carregar a enquete
