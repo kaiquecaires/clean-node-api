@@ -1,8 +1,6 @@
 import MockDate from 'mockdate'
 import { DbSaveSurveyResult } from './db-save-survey-result'
-import { SaveSurveyResultModel } from '@/domain/useCases/save-survey-result'
-import { SurveyResultModel } from '@/domain/models/survey-result'
-import { SaveSurveyResultRepository } from '@/data/protocols/db/survey/save-survey-result-repository'
+import { SaveSurveyResultRepository, SurveyResultModel, SaveSurveyResultModel } from './db-save-survey-result-protocols'
 
 const makeFakeSurveyResultData = (): Omit<SurveyResultModel, 'id'> => ({
   accountId: 'any_account_id',
