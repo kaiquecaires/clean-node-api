@@ -35,9 +35,7 @@ describe('DbAddAccount UseCase', () => {
 
   test('Should throw if hasher throws', async () => {
     const { hasherStub, sut } = makeSut()
-    jest.spyOn(hasherStub, 'hash').mockReturnValueOnce(
-      new Promise((resolve, reject) => reject(new Error()))
-    )
+    jest.spyOn(hasherStub, 'hash').mockRejectedValueOnce(new Error())
     const promise = sut.add(mockAddAccountParams())
     await expect(promise).rejects.toThrow()
   })
