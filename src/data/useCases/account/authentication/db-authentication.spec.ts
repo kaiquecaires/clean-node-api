@@ -1,10 +1,5 @@
 import { DbAuthentication } from './db-authentication'
-import {
-  HashComparer,
-  LoadAccountByEmailRepository,
-  Encrypter,
-  UpdateAccessTokenRepository
-} from './db-authentication-protocols'
+import { HashComparer, LoadAccountByEmailRepository, Encrypter, UpdateAccessTokenRepository } from './db-authentication-protocols'
 import { mockHashComparer, mockEncrypter, mockLoadAccountByEmailRepository, mockUpdateAccessTokenRepository } from '@/data/test'
 import { mockFakeAuthentication } from '@/domain/test'
 
@@ -21,12 +16,7 @@ const makeSut = (): SutTypes => {
   const hashComparerStub = mockHashComparer()
   const encrypterStub = mockEncrypter()
   const updateAccessTokenRepositoryStub = mockUpdateAccessTokenRepository()
-  const sut = new DbAuthentication(
-    loadAccountByEmailRepositoryStub,
-    hashComparerStub,
-    encrypterStub,
-    updateAccessTokenRepositoryStub
-  )
+  const sut = new DbAuthentication(loadAccountByEmailRepositoryStub, hashComparerStub, encrypterStub, updateAccessTokenRepositoryStub)
 
   return {
     sut,
@@ -42,7 +32,6 @@ describe('DbAuthentication UseCase', () => {
     const { loadAccountByEmailRepositoryStub, sut } = makeSut()
     const loadSpy = jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail')
     await sut.auth(mockFakeAuthentication())
-
     expect(loadSpy).toHaveBeenCalledWith('any_email@mail.com')
   })
 
@@ -50,16 +39,14 @@ describe('DbAuthentication UseCase', () => {
     const { loadAccountByEmailRepositoryStub, sut } = makeSut()
     jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail').mockRejectedValueOnce(new Error())
     const promise = sut.auth(mockFakeAuthentication())
-
     await expect(promise).rejects.toThrow()
   })
 
   test('Should return null if LoadAccountByEmailRepository returns null', async () => {
     const { loadAccountByEmailRepositoryStub, sut } = makeSut()
     jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail').mockReturnValue(null)
-    const accessToken = await sut.auth(mockFakeAuthentication())
-
-    expect(accessToken).toBe(null)
+    const model = await sut.auth(mockFakeAuthentication())
+    expect(model).toBe(null)
   })
 
   test('Should call HashComparer with correct values', async () => {
@@ -73,16 +60,14 @@ describe('DbAuthentication UseCase', () => {
     const { hashComparerStub, sut } = makeSut()
     jest.spyOn(hashComparerStub, 'compare').mockRejectedValueOnce(new Error())
     const promise = sut.auth(mockFakeAuthentication())
-
     await expect(promise).rejects.toThrow()
   })
 
   test('Should return null if HashComparer returns false', async () => {
     const { hashComparerStub, sut } = makeSut()
     jest.spyOn(hashComparerStub, 'compare').mockResolvedValueOnce(false)
-    const accessToken = await sut.auth(mockFakeAuthentication())
-
-    expect(accessToken).toBe(null)
+    const model = await sut.auth(mockFakeAuthentication())
+    expect(model).toBe(null)
   })
 
   test('Should call Encrypter with correct id', async () => {
@@ -90,12 +75,6 @@ describe('DbAuthentication UseCase', () => {
     const encryptSpy = jest.spyOn(encrypterStub, 'encrypt')
     await sut.auth(mockFakeAuthentication())
     expect(encryptSpy).toHaveBeenCalledWith('any_id')
-  })
-
-  test('Should return a token on success', async () => {
-    const { sut } = makeSut()
-    const accessToken = await sut.auth(mockFakeAuthentication())
-    expect(accessToken).toBe('any_token')
   })
 
   test('Should call UpdateAccessTokenRepository with correct values', async () => {
@@ -109,7 +88,13 @@ describe('DbAuthentication UseCase', () => {
     const { updateAccessTokenRepositoryStub, sut } = makeSut()
     jest.spyOn(updateAccessTokenRepositoryStub, 'updateAccessToken').mockRejectedValueOnce(new Error())
     const promise = sut.auth(mockFakeAuthentication())
-
     await expect(promise).rejects.toThrow()
+  })
+
+  test('Should return an AuthenticationModel on success', async () => {
+    const { sut } = makeSut()
+    const { accessToken, name } = await sut.auth(mockFakeAuthentication())
+    expect(accessToken).toBe('any_token')
+    expect(name).toBe('any_name')
   })
 })
