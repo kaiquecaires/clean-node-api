@@ -1,6 +1,6 @@
 {
   "name": "clean-node-api",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "main": "index.js",
   "author": "kaique coimbra <kaique.caires@yahoo.com>",
   "license": "MIT",
