@@ -8,6 +8,7 @@ import { mockSurveyResultModel } from '@/domain/test'
 import MockDate from 'mockdate'
 
 const mockHttpRequest = (): HttpRequest => ({
+  accountId: 'any_account_id',
   params: {
     surveyId: 'any_id'
   }
@@ -46,11 +47,11 @@ describe('LoadSurveyResult Controller', () => {
     expect(loadByIdSpy).toHaveBeenCalledWith('any_id')
   })
 
-  test('Should call LoadSurveyResult with correct value', async () => {
+  test('Should call LoadSurveyResult with correct values', async () => {
     const { sut, loadSurveyResultStub } = makeSut()
     const loadSpy = jest.spyOn(loadSurveyResultStub, 'load')
     await sut.handle(mockHttpRequest())
-    expect(loadSpy).toHaveBeenCalledWith('any_id')
+    expect(loadSpy).toHaveBeenCalledWith('any_id', 'any_account_id')
   })
 
   test('Should return 403 if LoadSurveyById returns null', async () => {
