@@ -1,4 +1,4 @@
-import { Controller, HttpRequest, HttpResponse, Validation } from '@/application/protocols'
+import { Controller, HttpResponse, Validation } from '@/application/protocols'
 import { badRequest, serverError, ok, forbidden } from '@/application/helpers/http-helper'
 import { EmailInUseError } from '@/application/errors'
 import { AddAccount } from '@/domain/useCases/account/add-account'
@@ -11,13 +11,13 @@ export class SignUpController implements Controller {
     private readonly authentication: Authentication
   ) {}
 
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle (request: SignUpController.Request): Promise<HttpResponse> {
     try {
-      const error = this.validation.validate(httpRequest.body)
+      const error = this.validation.validate(request)
       if (error) {
         return badRequest(error)
       }
-      const { email, password, name } = httpRequest.body
+      const { email, password, name } = request
       const account = await this.addAccount.add({
         name,
         email,
@@ -34,5 +34,14 @@ export class SignUpController implements Controller {
     } catch (error) {
       return serverError(error)
     }
+  }
+}
+
+export namespace SignUpController {
+  export type Request = {
+    email: string
+    password: string
+    name: string
+    passwordConfirmation: string
   }
 }
